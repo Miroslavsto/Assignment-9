@@ -1,0 +1,26 @@
+def compute_mpg(miles, gallons):
+    if gallons == 0:
+        return 0.0
+    return miles / gallons
+
+def main():
+    trip_count = 0
+    while True:
+        try:
+            destination = input("Enter destination city (Ctrl+Z to stop): ")
+            if not destination:
+                break
+            miles = float(input("Enter miles traveled: "))
+            gallons = float(input("Enter gallons used: "))
+            
+            mpg = compute_mpg(miles, gallons)
+            print(f"Destination: {destination}, Miles: {miles:.2f}, MPG: {mpg:.2f}\n")
+            
+            trip_count += 1
+        except (ValueError, EOFError):
+            break
+    
+    print(f"Total number of trips entered: {trip_count}")
+
+if __name__ == "__main__":
+    main()

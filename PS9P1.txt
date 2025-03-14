@@ -1,0 +1,32 @@
+def compute_total(quantity, price):
+     Compute the total price before discount
+    total = quantity * price
+    
+     Apply a 10% discount if total exceeds $10,000
+    if total > 10000:
+        discount = total * 0.10  # 10% discount
+        total -= discount
+        print(f"Discount applied: ${discount:.2f}")
+    
+    return total
+
+total_extended_price = 0
+
+while True:
+    try:
+        quantity = int(input("Enter quantity (or type 'ctl+z' to stop): "))
+        price = float(input("Enter price per item: "))
+    except ValueError:
+        break  # Exit if user enters invalid input or 'ctl+z' is used
+    
+    total = compute_total(quantity, price)
+    
+    print(f"Quantity: {quantity}, Price: ${price:.2f}, Total: ${total:.2f}")
+    
+    total_extended_price += total  # Add to the total extended price
+
+    continue_program = input("Do you want to continue with another item? (Yes/No): ").strip().lower()
+    if continue_program != 'yes':
+        break
+
+print(f"Total Extended Price for All Items: ${total_extended_price:.2f}")

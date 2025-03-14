@@ -1,0 +1,29 @@
+def compute_tuition_owed(credit_hours, district_code):
+    if district_code == 'I':
+        return credit_hours * 250  # In-District tuition rate
+    elif district_code == 'O':
+        return credit_hours * 550  # Out-of-District tuition rate
+    else:
+        return 0  # Invalid district code, return 0
+
+total_tuition_owed = 0
+
+while True:
+    last_name = input("Enter student's last name (or type 'ctl+z' to stop): ")
+    if last_name.lower() == 'ctl+z':  # If user types 'ctl+z', stop the loop
+        break
+    
+    credit_hours = int(input("Enter credit hours: "))
+    district_code = input("Enter district code (I for In-District, O for Out-of-District): ").strip().upper()
+    
+    tuition_owed = compute_tuition_owed(credit_hours, district_code)
+    
+    print(f"Student {last_name} owes: ${tuition_owed:.2f}")
+    
+    total_tuition_owed += tuition_owed  # Add the student's tuition to the total
+
+    continue_program = input("Do you want to continue with this program? (Yes/No): ").strip().lower()
+    if continue_program != 'yes':
+        break
+
+print(f"Total Tuition Owed for All Students: ${total_tuition_owed:.2f}")
